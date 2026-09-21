@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Solution {
+
+    static int longestPalindrome(String s) {
+        int max = 1;
+
+        for (int i = 0; i < s.length(); i++) {
+            max = Math.max(max, expand(s, i, i));
+            max = Math.max(max, expand(s, i, i + 1));
+        }
+
+        return max;
+    }
+
+    static int expand(String s, int left, int right) {
+        while (left >= 0 && right < s.length()
+                && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+
+        return right - left - 1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        String s = sc.next();
+
+        for (int i = 0; i < n; i++) {
+            String rotated = s.substring(i) + s.substring(0, i);
+            System.out.println(longestPalindrome(rotated));
+        }
+
+        sc.close();
+    }
+}
