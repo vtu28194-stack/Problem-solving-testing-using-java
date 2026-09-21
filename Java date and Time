@@ -1,0 +1,15 @@
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int month = scanner.nextInt();
+        int day = scanner.nextInt();
+        int year = scanner.nextInt();
+        scanner.close();
+
+        LocalDate date = LocalDate.of(year, month, day);
+        System.out.println(date.getDayOfWeek());
+    }
+}
